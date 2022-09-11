@@ -21,11 +21,11 @@ const PORT = config.get('port')||3001
 
 async function start(){
     try{
-        await mongoose.connect(config.get('mongo_url'),{
+        await mongoose.connect(process.env.mongo_url,{
             useNewUrlParser:true,
             useUnifiedTopology:true,
         })
-        app.listen(PORT,()=>{
+        app.listen(process.env.PORT||3001,()=>{
             console.log(`app started ${PORT}`)
         })
     }catch(e){
